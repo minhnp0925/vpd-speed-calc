@@ -14,6 +14,7 @@ class Pet:
 
     atb: float = 0.0
     turn_count: int = 0
+    alive: bool = True
 
     effects: List[Effect] = field(default_factory=list)
     items: List[Item] = field(default_factory=list)
@@ -54,5 +55,12 @@ class Pet:
 
     def reset_atb(self) -> None:
         self.atb = 0.0
+
+    def kill(self) -> None:
+        self.alive = False
+        self.atb = 0.0
+    
+    def isAlive(self) -> bool:
+        return self.alive
 
     

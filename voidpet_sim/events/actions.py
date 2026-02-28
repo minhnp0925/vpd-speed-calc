@@ -50,3 +50,13 @@ class ApplyEffectAction(Action):
         targets = self.target_selector.select(source, context)
         for pet in targets:
             pet.apply_effect(self.effect_cls(self.duration))
+
+class KillAction(Action):
+    def __init__(self, target_selector: TargetSelector) -> None:
+        self.target_selector = target_selector
+
+    def execute(self, source: Pet, context: BattleContext) -> None:
+        targets = self.target_selector.select(source, context)
+        for pet in targets:
+            if pet.alive:
+                pet.kill()

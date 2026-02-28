@@ -13,7 +13,7 @@ class Simulator:
         self.events = events
 
     def next(self, pets: List[Pet]) -> Pet:
-        speeds = [pet.get_speed() for pet in pets]
+        speeds = [pet.get_speed() for pet in pets if pet.isAlive()]
         fastest = max(speeds)
 
         min_time = float("inf")
@@ -63,8 +63,7 @@ class Simulator:
             print(
                 f"Turn {self.context.total_turns}: "
                 f"{mover.name} "
-                f"(pet turns: {mover.turn_count})\n"
-                f"------------------------------------"
+                f"(pet turns: {mover.turn_count})"
             )
             # tick effects
             for effect in mover.effects:
