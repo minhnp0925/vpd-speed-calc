@@ -5,16 +5,10 @@ from voidpet_sim.items import *
 from voidpet_sim.events import *
 
 pets = [
-    Pet("Tyrant",2,61231),
-    Pet("Merry",1,47959,items=[
-        AnxietyScarf()
-    ]),
-    Pet("Wonder",1,49714,items=[
-        RubberRingDonut()
-    ]),
-    Pet("Cringe",1,12224),
+    Pet("Mischief",2,54582),
+    Pet("Gronk",1,43489),
 ]
 
 context = BattleContext(pets)
-engine = Simulator(context, TotalTurnEndCondition(100))
+engine = Simulator(context, TotalTurnEndCondition(30))
 engine.run()

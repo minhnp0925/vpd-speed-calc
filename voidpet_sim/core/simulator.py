@@ -63,7 +63,8 @@ class Simulator:
             print(
                 f"Turn {self.context.total_turns}: "
                 f"{mover.name} "
-                f"(pet turns: {mover.turn_count})"
+                f"(pet turns: {mover.turn_count})\n"
+                f"--------------------------------------"
             )
             # tick effects
             for effect in mover.effects:
