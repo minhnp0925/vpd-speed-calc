@@ -1,7 +1,5 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
-from voidpet_sim.models.pet import Pet
-
 
 class Effect(ABC):
     def __init__(self, duration: int) -> None:
@@ -11,7 +9,7 @@ class Effect(ABC):
     def modify_speed(self, current_speed: float) -> float:
         pass
 
-    def on_turn_end(self, pet: Pet) -> None:
+    def on_turn_end(self) -> None:
         self.duration -= 1
 
     def is_expired(self) -> bool:

@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
 from voidpet_sim.core.context import BattleContext
-from voidpet_sim.models.pet import Pet
-
+from voidpet_sim.pets import Pet
 
 class EndCondition(ABC):
     @abstractmethod

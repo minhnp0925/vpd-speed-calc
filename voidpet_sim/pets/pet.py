@@ -3,6 +3,7 @@ from dataclasses import dataclass, field
 
 from typing import List
 from voidpet_sim.effects.base import Effect
+from voidpet_sim.items.base import Item
 
 @dataclass
 class Pet:
@@ -15,8 +16,7 @@ class Pet:
     turn_count: int = 0
 
     effects: List[Effect] = field(default_factory=list)
-    items: List[object] = field(default_factory=list)
-    passives: List[object] = field(default_factory=list)
+    items: List[Item] = field(default_factory=list)
 
     def get_speed(self) -> float:
         speed = self.base_speed
@@ -24,7 +24,8 @@ class Pet:
 
         for effect in self.effects:
             speed = effect.modify_speed(speed)
-
+        speed=round(speed,3)
+        # print(f"{self.name} current speed = {speed}")
         return speed
 
     def apply_effect(self, new_effect: Effect) -> None:
@@ -38,6 +39,15 @@ class Pet:
 
     def remove_expired_effects(self) -> None:
         self.effects = [e for e in self.effects if not e.is_expired()]
+
+    def remove_buffs(self) -> None:
+        self.effects = [e for e in self.effects if not e.is_buff()]
+
+    def remove_debuffs(self) -> None:
+        self.effects = [e for e in self.effects if not e.is_debuff()]
+
+    def remove_all_effects(self) -> None:
+        self.effects.clear()
 
     def increment_turn(self) -> None:
         self.turn_count += 1

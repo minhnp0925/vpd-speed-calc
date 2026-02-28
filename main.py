@@ -45,18 +45,20 @@ class Simulator:
                     self.atb[pet.name] = 0
                     self.speed[pet.name] += pet.scaling*pet.speed
                     self.turn_count[pet.name] += 1
-                    print(f"Turn #{i}: {moving_pet.name}, turn count = {self.turn_count[pet.name]}")
+                    print(f"{i+1},{moving_pet.name},{self.turn_count[pet.name]}")
+                    # print(f"Turn #{i+1}: {moving_pet.name}, turn count = {self.turn_count[pet.name]}")
                 else:
                     v = self.speed[pet.name]/current_fastest
                     self.atb[pet.name] += min_t * v
     
 pets = [
-    Voidpet("Apathy", 3764),
-    Voidpet("Sad", 5478),
-    Voidpet("Merry", 5420),
-    Voidpet("Resis", 1797),
-    Voidpet("Tauron", 5729),
+    Voidpet(name="Cringe", speed=12224),
+    Voidpet(name="Merry", speed=47959, scaling = 0.03),
+    Voidpet(name="Wonder", speed=49714),
+    Voidpet(name="Salty", speed=17622),
+
+    Voidpet(name="Tyrant", speed=61231)
 ]
 
 simulator = Simulator(pets)
-simulator.simulate(50)
+simulator.simulate(100)

@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import List
-from voidpet_sim.models.pet import Pet
+from voidpet_sim.pets import Pet
 
 @dataclass
 class BattleContext:
