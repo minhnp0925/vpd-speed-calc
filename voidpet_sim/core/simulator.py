@@ -20,7 +20,7 @@ class Simulator:
         mover: Pet | None = None
 
         # find next mover
-        for pet, speed in zip(pets, speeds):
+        for pet, speed in zip(filter(lambda pet: pet.isAlive(), pets), speeds):
             remaining: float = 100.0 - pet.atb
             velocity: float = speed / fastest
             time_to_full: float = remaining / velocity
